@@ -10,7 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// laravelをいれると最初に入れてくれている
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/hello', function () {
+//     return view('hello');
+// });
+
+Route::get('/hello','HelloController@index');
+
+Route::get('hello/{id}', 'HelloController@show');
