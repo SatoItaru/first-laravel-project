@@ -2,6 +2,8 @@ version: '3'
 
 services:
   mysql:
+    image: mysql
+    platform: linux/x86_64
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
