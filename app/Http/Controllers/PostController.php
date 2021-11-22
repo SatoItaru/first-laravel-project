@@ -20,8 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $posts->load('user');
+        $posts = Post::all();//Postの全てを$postに代入している。
+        $posts->load('user');//リレーションを呼んでいる。
         return view('posts.index', compact('posts'));
         //return view('posts.index');
     }
@@ -50,6 +50,8 @@ class PostController extends Controller
         $input['user_id'] = Auth::id();
         // user_id は Auth::id() で取得し $input の配列に追加します。
         Post::create($input);
+
+        return redirect()->route('posts.index');
         // create() を使用して新規投稿を保存しましょう。
     }
 
