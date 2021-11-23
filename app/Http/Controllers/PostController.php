@@ -64,6 +64,11 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $post->load('user', 'comments');
+        // テーブルが2つあったとしたら
+        // Eagerロード：2つのデーブルのデータを１度に取得します
+        // →　クエリの発行回数を減らせるので、N＋1問題の回避策として用いられる
+        // lazyロード：テーブル１からデータ取得し、テーブル２からデータ取得
 
         return view('posts.show', compact('post'));
     }
@@ -115,9 +120,7 @@ class PostController extends Controller
         if(Auth::id() !== $post->user_id){
             return abort(404);
         }
-
         $post -> delete();
-
         return redirect()->route('posts.index');
     }
 }

@@ -1,11 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\CommentRequest;
+use App\Comment;
+use App\Post;
+use Auth;
 
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,10 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        $posts->load('user');
+        return view('posts.index', compact('posts'));
+        // return view('posts.index');
     }
 
     /**
@@ -32,9 +43,19 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        //
+        $post = Post::find($request->post_id);  //まず該当の投稿を探す
+
+        $comment = new Comment;              //commentのインスタンスを作成
+
+        $comment -> body    = $request -> body;
+        $comment -> user_id = Auth::id();
+        $comment -> post_id = $request -> post_id;
+
+        $comment -> save();
+
+        return view('posts.show', compact('post'));  //リターン先は該当の投稿詳細ページ
     }
 
     /**
