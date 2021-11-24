@@ -15,6 +15,18 @@
                     <p class="card-text text-white">投稿者：{{ $post->user->name }}</p>
                     <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary rounded-circle">詳細へ</a>
                 </div>
+                <div class="row justify-content-center">
+                  <div class="col-md-3">
+                      <form action="">
+                          <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+                      </form>
+                  </div>
+                  <div class="col-md-3">
+                      <form action="">
+                          <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+                      </form>
+                  </div>
+              </div>
                 <div class="card-footer text-muted">
                     投稿日時：{{ $post->created_at }}
                 </div>
