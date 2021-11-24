@@ -10,7 +10,9 @@
                 <p class="card-text">内容：{{ $post->body }}</p>
                 <p>投稿者：{{$post->user->name}}</p>
                 <p>投稿日時：{{ $post->created_at }}</p>
-
+                @isset($post->image_path)
+                  <img src="{{ $post->image_path }}" alt="画像">
+                @endisset
                 <div class="btn-group">
                     <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">編集する</a>
                 <form action='{{ route('posts.destroy', $post->id) }}' method='post'>
