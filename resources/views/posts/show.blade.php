@@ -46,18 +46,10 @@
                 <div calss="card-body">
                   <h5 class="card-title mx-3 my-3">投稿日時：{{ $comment->created_at}}</h5>
                   <p class="card-text mx-3 my-3">内容：{{  $comment->body}}</p>
-
-
                 </div>
-
             </div>
-                
             @endforeach
-
         </div>
-
     </div>
-
-
 </div>
 @endsection
