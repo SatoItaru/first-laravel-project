@@ -36,3 +36,7 @@ Route::resource('comments', 'CommentController');
 Route::post('posts/{post}/favorites', 'FavoriteController@store')->name('favorites');
 
 Route::post('posts/{post}/unfavorites', 'FavoriteController@destroy')->name('unfavorites');
+
+Route::get('login/twitter', 'Auth\LoginController@redirectToProvider')->name('login.twitter');
+
+Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallback');
