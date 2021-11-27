@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+
 @extends('layouts.app')
 
 @section('content')
@@ -67,7 +69,7 @@
                     </form>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <a href="{{ route('login.twitter') }}"><i class="fas fa-twitter">Twitterでログイン</i></a>
+                            <a href="{{ route('login.twitter') }}"><i class="fab fa-twitter">Twitterでログイン</i></a>
                         </div>
                     </div>
                 </div>
